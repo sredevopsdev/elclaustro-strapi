@@ -1,0 +1,53 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend-ingress
+  namespace: elclaustro-strapi
+spec:
+  rules:
+    - host: foro.sredevops.cl
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: 8080
+  tls:
+    - hosts:
+        - foro.sredevops.cl
+      secretName: sredevops-cl-tls
+---
+# # Redirect domain to subdomain.
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: backend-ingress-redirect
+#   namespace: elclaustro-strapi
+# spec:
+#   entryPoints:
+#     - websecure
+#   routes: # Matches TLD and www and redirects to foro.sredevops.cl
+#     - match: Host(`sredevops.cl`) || Host(`www.sredevops.cl`)
+#       kind: Rule
+#       middlewares:
+#         - name: redirect
+#       services: # Redirects to foro.sredevops.cl
+#         - name: backend
+#           port: 8080
+
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: Middleware
+# metadata:
+#   name: redirect
+#   namespace: elclaustro-strapi
+# spec:
+#   redirectRegex: # TLD and www redirects to foro.sredevops.cl
+#     regex: "^https://(www.)?sredevops.cl/(.*)"
+#     replacement: "https://foro.sredevops.cl/$2"
+#     permanent: false
+# ---
+

@@ -113,3 +113,7 @@ exports
 dist
 build
 .strapi-updater.json
+.env.docker
+bd_backups
+.env.local
+

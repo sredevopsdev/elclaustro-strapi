@@ -5,3 +5,7 @@ build/
 node_modules/
 .env
 data/
+.env.docker
+bd_backups
+.env.local
+deployment

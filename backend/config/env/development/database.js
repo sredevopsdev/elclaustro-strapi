@@ -6,7 +6,7 @@ module.exports =  ({ env }) => ({
 			port: env.int('DATABASE_PORT', 5432),
 			database: env('DATABASE_NAME', 'strapi'),
 			user: env('DATABASE_USERNAME', 'strapi'),
-			password: env('DATABASE_PASSWORD', '0c1N0c1N!'),
+			password: env('DATABASE_PASSWORD', 'strapi'),
 			ssl: env.bool('DATABASE_SSL', false)
 		}
 	}
