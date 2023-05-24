@@ -15,6 +15,8 @@ on:
     paths:
       - 'frontend/**'
       # - '.github/workflows/firebase-hosting-merge.yml'
+  workflow_dispatch:
+    
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
